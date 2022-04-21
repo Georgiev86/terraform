@@ -15,7 +15,8 @@ import (
 // successful, returns the resulting type. If unsuccessful, error diagnostics
 // are returned.
 func Type(expr hcl.Expression) (cty.Type, hcl.Diagnostics) {
-	return getType(expr, false)
+	ty, _, diags := getType(expr, false)
+	return ty, diags
 }
 
 // TypeConstraint attempts to parse the given expression as a type constraint
@@ -25,7 +26,7 @@ func Type(expr hcl.Expression) (cty.Type, hcl.Diagnostics) {
 // A type constraint has the same structure as a type, but it additionally
 // allows the keyword "any" to represent cty.DynamicPseudoType, which is often
 // used as a wildcard in type checking and type conversion operations.
-func TypeConstraint(expr hcl.Expression) (cty.Type, hcl.Diagnostics) {
+func TypeConstraint(expr hcl.Expression) (cty.Type, *Defaults, hcl.Diagnostics) {
 	return getType(expr, true)
 }
 

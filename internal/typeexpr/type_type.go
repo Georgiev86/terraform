@@ -61,7 +61,8 @@ func init() {
 			case customdecode.CustomExpressionDecoder:
 				return customdecode.CustomExpressionDecoderFunc(
 					func(expr hcl.Expression, ctx *hcl.EvalContext) (cty.Value, hcl.Diagnostics) {
-						ty, diags := TypeConstraint(expr)
+						// TODO: include type defaults in capsule type
+						ty, _, diags := TypeConstraint(expr)
 						if diags.HasErrors() {
 							return cty.NilVal, diags
 						}

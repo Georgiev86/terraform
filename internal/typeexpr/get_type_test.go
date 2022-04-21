@@ -305,7 +305,7 @@ func TestGetType(t *testing.T) {
 				t.Fatalf("failed to parse: %s", diags)
 			}
 
-			got, diags := getType(expr, test.Constraint)
+			got, _, diags := getType(expr, test.Constraint)
 			if test.WantError == "" {
 				for _, diag := range diags {
 					t.Error(diag)
@@ -377,7 +377,7 @@ func TestGetTypeJSON(t *testing.T) {
 				t.Fatalf("failed to decode: %s", diags)
 			}
 
-			got, diags := getType(content.Expr, test.Constraint)
+			got, _, diags := getType(content.Expr, test.Constraint)
 			if test.WantError == "" {
 				for _, diag := range diags {
 					t.Error(diag)
