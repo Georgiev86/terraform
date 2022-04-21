@@ -56,7 +56,6 @@ func (s *Scope) Functions() map[string]function.Function {
 			"concat":           stdlib.ConcatFunc,
 			"contains":         stdlib.ContainsFunc,
 			"csvdecode":        stdlib.CSVDecodeFunc,
-			"defaults":         s.experimentalFunction(experiments.ModuleVariableOptionalAttrs, funcs.DefaultsFunc),
 			"dirname":          funcs.DirnameFunc,
 			"distinct":         stdlib.DistinctFunc,
 			"element":          stdlib.ElementFunc,
